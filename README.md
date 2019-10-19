@@ -12,7 +12,6 @@
 	cd tmva/test
 
 #### (2) Run for training
-	cd tmva/test
 	python job_submission.py --resType HHres --channel uu --launch
 
 #### (3) Options
@@ -25,3 +24,6 @@
 	workdir     : current working directory in which this repository is cloned 
 	out_eosdir  : directory where output files will be stored
 	myMethodList : currently uses ['BDTG01'] which is the Gradient Boosted DT. To compare several methods, use e.g. ['BDT,BDTG'] 
+
+#### (5) Investigate output by running
+	root -l TMVAGui.C\(\"your_output_file.root\"\)
