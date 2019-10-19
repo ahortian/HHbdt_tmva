@@ -89,13 +89,13 @@ def main(argv):
 	# -----------------------------------------------------------
 	# the following are vars to be added in N+1 test
 	# -----------------------------------------------------------
-	add_var_name =[""] # need at leat this one
-	add_varfunc_name =[""] # need at leat this one
+	add_var_name =[""] # need at least this one
+	add_varfunc_name =[""] # need at least this one
 	# -----------------------------------------------------------
 	# -----------------------------------------------------------
 	# the following are vars to be excluded in N-1 test
 	# -----------------------------------------------------------
-	excludeVar = [""] # need at leat this one
+	excludeVar = [""] # need at least this one
 	###				"DR_jj_Z",
 	###				"DR_ele1ele2",
 	# -----------------------------------------------------------
