@@ -136,22 +136,9 @@ void HH_TMVAClassification( TString myMethodList = "", TString myOutputRootFile 
    // 
    // --- Boosted Decision Trees
    Use["BDT"]             = 1; // uses Adaptive Boost
-	Use["BDT01"]             = 0; // uses Adaptive Boost
-	Use["BDT02"]             = 0; // uses Adaptive Boost
-	Use["BDT03"]             = 0; // uses Adaptive Boost
-	Use["BDT04"]             = 0; // uses Adaptive Boost
-	Use["BDT05"]             = 0; // uses Adaptive Boost
 	
    Use["BDTG"]            = 0; // uses Gradient Boost
-	Use["BDTG01"]            = 0; // uses Gradient Boost
-	Use["BDTG02"]            = 0; // uses Gradient Boost
-	Use["BDTG03"]            = 0; // uses Gradient Boost
-	Use["BDTG04"]            = 0; // uses Gradient Boost
-	Use["BDTG05"]            = 0; // uses Gradient Boost
-	Use["BDTG06"]            = 0;
-	Use["BDTG07"]            = 0;
-	Use["BDTG08"]            = 0;
-	Use["BDTG09"]            = 0;
+   Use["BDTG01"]          = 0; // uses Gradient Boost
 	
    Use["BDTB"]            = 0; // uses Bagging
    Use["BDTD"]            = 0; // decorrelation + Adaptive Boost
@@ -663,7 +650,6 @@ void HH_TMVAClassification( TString myMethodList = "", TString myOutputRootFile 
 		factory->BookMethod( TMVA::Types::kBDT, "BDT", ParaOptStr );
 			//BDT option : !H:!V:NTrees=850:MinNodeSize=4.0%:MaxDepth=3:BoostType=AdaBoost:DoBoostMonitor:AdaBoostBeta=0.35:SeparationType=GiniIndex:nCuts=20
 	//----------------------------------------------------------------------
-	
 	// DoBoostMonitor
 	// SeparationType=GiniIndex
 	// NegWeightTreatment=Pray
@@ -677,50 +663,16 @@ void HH_TMVAClassification( TString myMethodList = "", TString myOutputRootFile 
 	// VarTransform=G,D VarTransform=G,D,G,D
 	
 	// CreateMVAPdfs:NbinsMVAPdf=20 to make BDT plot possible // https://root-forum.cern.ch/t/bdt-c-macro-in-the-tmvagui-error-in-txmlengine-parsefile-xml-syntax-error-at-line/29593/2
-	
+	//----------------------------------------------------------------------
 	if (Use["BDTG"]) // Gradient Boost
 		factory->BookMethod( TMVA::Types::kBDT, "BDTG",
 							"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=850:MinNodeSize=2.5%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=3:CreateMVAPdfs:NbinsMVAPdf=20");
-	//------------------- Gradient Boost
 	
 	if (Use["BDTG01"]) // Gradient Boost
 		factory->BookMethod( TMVA::Types::kBDT, "BDTG01",
 							"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NTrees=850:MinNodeSize=2.5%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=3:CreateMVAPdfs:NbinsMVAPdf=20");
+   //----------------------------------------------------------------------
 	
-	
-	
-	
-	
-	if (Use["BDTG02"]) // Gradient Boost // MaxDepth=2
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG02",
-							"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=1200:MinNodeSize=3%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=2:CreateMVAPdfs:NbinsMVAPdf=20");
-	if (Use["BDTG03"]) // Gradient Boost // MinNodeSize=5%
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG03",
-							"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=1200:MinNodeSize=5%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=4:CreateMVAPdfs:NbinsMVAPdf=20");
-	if (Use["BDTG04"]) // Gradient Boost // MaxDepth=3 MinNodeSize=5%
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG04",
-							"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=1200:MinNodeSize=5%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=3:CreateMVAPdfs:NbinsMVAPdf=20");
-	
-	
-	
-	if (Use["BDTG05"]) // Gradient Boost // MinNodeSize=5%
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG05",
-							"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=850:MinNodeSize=5.0%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=3");
-	if (Use["BDTG06"]) // Gradient Boost // Shrinkage=0.05
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG06",
-						"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=850:MinNodeSize=2.5%:Shrinkage=0.05:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=3");
-	if (Use["BDTG07"]) // Gradient Boost
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG07",
-						"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=850:MinNodeSize=2.5%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=-1:MaxDepth=3");
-	if (Use["BDTG08"]) // Gradient Boost
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG08",
-						"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=850:MinNodeSize=2.5%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=2");
-	if (Use["BDTG09"]) // Gradient Boost // MaxDepth=4
-		factory->BookMethod( TMVA::Types::kBDT, "BDTG09",
-						"!H:!V:BoostType=Grad:DoBoostMonitor:SeparationType=GiniIndex:NegWeightTreatment=Pray:NTrees=850:MinNodeSize=2.5%:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=4");
-	//----------------------------------------------------------------------
-
-
    if (Use["BDTB"]) // Bagging
       factory->BookMethod( TMVA::Types::kBDT, "BDTB",
                            "!H:!V:NTrees=400:BoostType=Bagging:SeparationType=GiniIndex:nCuts=20" );
