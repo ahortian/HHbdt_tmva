@@ -27,3 +27,10 @@
 
 #### (5) Investigate output by running
 	root -l TMVAGui.C\(\"your_output_file.root\"\)
+	
+#### (6) Make plots without using GUI
+	cd ploting_pack
+	python plot_tmva.py -o plot_sp0_ee -i 2019_01_16_213101
+	
+	# Here the plot_sp0_ee is the directory the created plots will be in. 
+	# The 2019_01_16_213101 is the timestamp of the condor jobs you have run.
